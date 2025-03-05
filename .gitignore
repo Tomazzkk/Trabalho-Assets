@@ -1,0 +1,59 @@
+# ==========================
+# Unity gitignore
+# ==========================
+
+# Diretórios gerados automaticamente pelo Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# Cache do projeto, recriado automaticamente pelo Unity
+[Mm]emoryCaptures/
+[Assets/Scripts]/Generated/
+
+# Configurações específicas de usuário
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# Configurações específicas do Rider e Visual Studio
+.vscode/
+.idea/
+*.iml
+
+# Meta arquivos temporários
+*.tmd
+
+# Configurações do pacote Unity
+Packages/com.unity.package-manager/.gitignore
+Packages/com.unity.package-manager/cache/
+Packages/com.unity.package-manager/tmp/
+
+# Logs do Unity e crash reports
+sysinfo.txt
+crash*.log
+error.log
+
+# Arquivos de build exportados
+*.apk
+*.aab
+*.unitypackage
+
+# Playmode e Editmode test results
+Assets/Scenes/*.unity
+Assets/StreamingAssets/
+Assets/AddressableAssetsData/
+
+# Configurações de iluminação geradas automaticamente
+LightmapSnapshot
