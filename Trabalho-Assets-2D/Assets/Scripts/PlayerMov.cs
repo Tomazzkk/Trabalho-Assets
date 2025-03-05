@@ -55,14 +55,20 @@ public class PlayerMov : MonoBehaviour
 
     public void VirarJogador()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
+            Animator.SetBool("Andando", true);
            transform.localScale = new Vector3(-1.903597f, 1.903597f, 1.903597f);
 
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
         {
+            Animator.SetBool("Andando", true);
             transform.localScale = new Vector3(1.903597f, 1.903597f, 1.903597f);
+        }
+        else
+        {
+            Animator.SetBool("Andando", false);
         }
     }
 }
