@@ -9,9 +9,11 @@ public class PlayerMov : MonoBehaviour
     public int jumpForce = 10;
     private Rigidbody2D rb;
     [SerializeField]public Animator Animator;
+    public bool isGrounded;
     
     void Start()
     {
+        
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -21,6 +23,8 @@ public class PlayerMov : MonoBehaviour
         Jump();
         VirarJogador();
     }
+
+    
     void Move()
     {
         float moveInput = Input.GetAxis("Horizontal");
@@ -39,8 +43,9 @@ public class PlayerMov : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) && isGrounded)
         {
+            Animator.SetBool("Pulando", true);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
@@ -50,6 +55,20 @@ public class PlayerMov : MonoBehaviour
         if (collision.gameObject.transform.CompareTag("enemy") || collision.gameObject.transform.CompareTag("enemy2"))
         {
             Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.transform.CompareTag("Grounded"))
+        {
+            Animator.SetBool("Pulando", false);
+            isGrounded = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.transform.CompareTag("Grounded"))
+        {
+            Animator.SetBool("Pulando", true);
+            isGrounded = false;
         }
     }
 
@@ -71,4 +90,7 @@ public class PlayerMov : MonoBehaviour
             Animator.SetBool("Andando", false);
         }
     }
+
+
+   
 }
