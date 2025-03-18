@@ -10,7 +10,7 @@ public class PlayerMov : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField]public Animator Animator;
     public bool isGrounded;
-    
+
     void Start()
     {
         
@@ -22,8 +22,10 @@ public class PlayerMov : MonoBehaviour
         Move();
         Jump();
         VirarJogador();
+    
     }
 
+    
     
     void Move()
     {
@@ -43,7 +45,7 @@ public class PlayerMov : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) && isGrounded)
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             Animator.SetBool("Pulando", true);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -54,6 +56,7 @@ public class PlayerMov : MonoBehaviour
     {
         if (collision.gameObject.transform.CompareTag("enemy") || collision.gameObject.transform.CompareTag("enemy2"))
         {
+            GetComponent<AudioSource>().Play();
             Destroy(collision.gameObject);
         }
 
@@ -67,6 +70,7 @@ public class PlayerMov : MonoBehaviour
     {
         if (collision.gameObject.transform.CompareTag("Grounded"))
         {
+            
             Animator.SetBool("Pulando", true);
             isGrounded = false;
         }
